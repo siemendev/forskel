@@ -1,5 +1,5 @@
 <?php
-namespace patricksiemen\forksel;
+namespace patricksiemen\ForkselBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
