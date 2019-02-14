@@ -1,8 +1,9 @@
 {
-    "name": "patricksiemen/forksel",
-    "description": "Forksel implements a fully decoupled frontend provider for multi site symfony projects.",
+    "name": "siemendev/forskel",
+    "description": "Forskel implements a fully decoupled frontend provider for multi site symfony projects.",
     "type": "symfony-bundle",
     "license": "MIT",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Patrick Siemen",
@@ -11,10 +12,12 @@
     ],
     "require": {
         "php": "^7.1.3",
-        "symfony/console": "4.2.*",
         "symfony/framework-bundle": "4.2.*",
         "symfony/twig-bundle": "^4.0",
         "symfony/yaml": "4.2.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "6.3.0"
     },
     "config": {
         "platform": {
@@ -28,12 +31,12 @@
 
     "autoload": {
         "psr-4": {
-            "patricksiemen\\ForkselBundle\\": ""
+            "siemendev\\ForskelBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "patricksiemen\\ForkselBundle\\Tests\\": "/Tests/"
+            "siemendev\\ForskelBundle\\Tests\\": "tests/"
         }
     },
     "conflict": {

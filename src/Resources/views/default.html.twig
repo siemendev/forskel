@@ -1,0 +1,27 @@
+{# TODO: Update the default "no template set" hint to be a bit prettier. #}
+<div style="border:1px solid red;padding:10px;font-family:Helvetica,Arial,Times;font-size:16px;background:white;margin:10px;">
+    <h2 style="margin-top: 0;font-size: 28px;text-transform: uppercase;">Have you seen my template?</h2>
+    <p>Model: <span style="background-color: #eee;padding: 5px 10px;border-radius: 10px;font-family: monospace;font-size: 16px;">{{ class }}</span></p>
+    <p>Looks like your model path and naming is not the same as the templates! You can choose two ways of fixing this:</p>
+    <ol>
+        <li>
+            <b>Equalize the naming and the paths (recommended)</b><br>
+            Either the name or the path (or both) are not the same on model and template. The model and the template
+            have to use a similar path. Example: when you store your model under "models/pages/MyFancyPage.php", you
+            need to place your template in "Resources/views/pages/my-fancy-page.html.twig". Btw: Forskel automatically
+            translates the models class name to a template name (MyFancyPage into my-fancy-page).
+        </li>
+        <li>
+            <b>Specify the path to your template manually</b><br>
+            Anyway, if you don´t like our little template guessing game, you can always specify your template directly
+            on the model. The AbstractModel has a method called getModelTemplate, if you overwrite it and return a valid
+            template identifier string, Ferskel will not try to guess the template itself. If you still see this message,
+            you should prbably consider taking a look into the symfony documentation <a href="https://symfony.com/doc/current/templating.html#referencing-templates-in-a-bundle">here</a>.
+        </li>
+    </ol>
+
+    {% if dump is not empty %}
+        <p>Here´s a dump of all parameters you´ve passed into this template:</p>
+        <pre style="background: #eee;border: 1px solid #ccc;padding: 10px;border-radius: 10pxmax-width: 100%;overflow: auto;max-height: 500px;">{{ dump }}</pre>
+    {% endif %}
+</div>

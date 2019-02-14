@@ -1,0 +1,16 @@
+services:
+
+  _defaults:
+    public: false
+    autowire: true
+
+  siemendev\ForskelBundle\Services\Builder:
+    autowire: true
+
+  siemendev\ForskelBundle\Twig\ForskelExtension:
+    autowire: true
+    tags: ['twig.extension']
+
+  siemendev\ForskelBundle\Twig\ForskelRuntime:
+    autowire: true
+    tags: ['twig.runtime']
