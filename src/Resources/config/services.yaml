@@ -4,7 +4,7 @@ services:
     public: false
     autowire: true
 
-  siemendev\ForskelBundle\Services\Builder:
+  siemendev\ForskelBundle\Services\Renderer:
     autowire: true
 
   siemendev\ForskelBundle\Twig\ForskelExtension:

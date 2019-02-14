@@ -4,7 +4,7 @@ namespace siemendev\ForskelBundle\Services;
 use Twig\Environment;
 use siemendev\ForskelBundle\Models\ModelInterface;
 
-class Builder
+class Renderer
 {
     /** @var Environment */
     protected $twig;
@@ -23,7 +23,7 @@ class Builder
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function buildModel(ModelInterface $model): ?string
+    public function renderModel(ModelInterface $model): ?string
     {
         $template = $model->getModelTemplate();
         $args = ['model' => $model];
@@ -63,7 +63,7 @@ class Builder
         $classFQN = $class->getName();
         $matches = [];
 
-        if(preg_match('/([A-Za-z]+)Bundle\\\models\\\(.*)\\' . $classShort . '/', $classFQN, $matches)) {
+        if(preg_match('/([A-Za-z]+)Bundle\\\Models\\\(.*)\\' . $classShort . '/', $classFQN, $matches)) {
 
             $template = '@' . $matches[1] . '/' . str_replace('\\', '/', $matches[2]) . $this->convertClassnameToTemplateName($classShort) . '.html.twig';
 
