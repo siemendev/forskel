@@ -26,7 +26,7 @@ class TwigRenderer extends AbstractRenderer
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function render(ModelInterface $model, $status = 200, $headers = []): Response
+    public function renderView(ModelInterface $model, $status = 200, $headers = []): ?string
     {
         $template = $model->getModelTemplate();
         $loader = $this->twig->getLoader();
@@ -45,6 +45,6 @@ class TwigRenderer extends AbstractRenderer
             }
         }
 
-        return new Response($this->twig->render($template, $args), $status, $headers);
+        return $this->twig->render($template, $args);
     }
 }

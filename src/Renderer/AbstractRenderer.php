@@ -2,15 +2,20 @@
 namespace siemendev\ForskelBundle\Renderer;
 
 use siemendev\ForskelBundle\Models\ModelInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 abstract class AbstractRenderer implements RendererInterface
 {
     /**
-     * Guess template
-     * Tries to guess the template name by the models namespace. If the template exists under that name,
-     * the guessed template will be used
-     * @param ModelInterface $model
-     * @return string|null
+     * @inheritDoc
+     */
+    public function render(ModelInterface $model, $status = 200, $headers = []): Response
+    {
+        return new Response($this->renderView($model), $status, $headers);
+    }
+
+    /**
+     * @inheritDoc
      */
     public function guessTemplate(ModelInterface $model): ?string
     {
@@ -34,13 +39,7 @@ abstract class AbstractRenderer implements RendererInterface
     }
 
     /**
-     * Class name string converter
-     * Converts the classname (camel case) to a template naming format.
-     * Example:
-     * MyFancyComponent => my-fancy-component
-     *
-     * @param string $classname
-     * @return string
+     * @inheritDoc
      */
     private function convertClassnameToTemplateName(string $classname): string
     {

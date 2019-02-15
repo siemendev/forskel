@@ -17,6 +17,6 @@ class ForskelRuntime implements RuntimeExtensionInterface
 
     public function render(ModelInterface $model): string
     {
-        return $this->forskel->renderModel($model);
+        return $this->forskel->renderView($model);
     }
 }
