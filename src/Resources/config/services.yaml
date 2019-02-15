@@ -4,13 +4,19 @@ services:
     public: false
     autowire: true
 
-  siemendev\ForskelBundle\Services\Renderer:
-    autowire: true
+  # Renderers
+  forskel.renderers:
+    namespace: 'siemendev\ForskelBundle\Renderer\'
+    resource: '../../Renderer/*'
+    tags: ['forskel.renderers']
 
-  siemendev\ForskelBundle\Twig\ForskelExtension:
+  # Twig Extension
+  forskel.twig.extension:
+    class: 'siemendev\ForskelBundle\Twig\ForskelExtension'
     autowire: true
     tags: ['twig.extension']
 
-  siemendev\ForskelBundle\Twig\ForskelRuntime:
+  forskel.twig.runtime:
+    class: 'siemendev\ForskelBundle\Twig\ForskelRuntime'
     autowire: true
     tags: ['twig.runtime']

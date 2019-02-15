@@ -1,16 +1,16 @@
 <?php
 namespace siemendev\ForskelBundle\Twig;
 
+use siemendev\ForskelBundle\Renderer\TwigRenderer;
 use Twig\Extension\RuntimeExtensionInterface;
-use siemendev\ForskelBundle\Services\Renderer;
 use siemendev\ForskelBundle\Models\ModelInterface;
 
 class ForskelRuntime implements RuntimeExtensionInterface
 {
-    /** @var Renderer */
+    /** @var TwigRenderer */
     protected $forskel;
 
-    public function __construct(Renderer $forskel)
+    public function __construct(TwigRenderer $forskel)
     {
         $this->forskel = $forskel;
     }
