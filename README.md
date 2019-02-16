@@ -90,6 +90,7 @@ class IndexController extends AbstractController
 }
 ```
 **Pro tip:** If you don't want to inject the Renderer in every controller manually, try extending symfonys AbstractController to automaticly load the renderer.
+
 **Master tip:** Overwrite the render() method in the extended AbstractController. This way you remove the build-in twig rendering, which forces the developers in the project even more to use Forskel for Frontend rendering.
 
 ## Contribution welcome!
