@@ -9,6 +9,8 @@ services:
     namespace: 'siemendev\ForskelBundle\Renderer\'
     resource: '../../Renderer/*'
     tags: ['forskel.renderers']
+    calls:
+      - ['setTemplatePath', ['%forskel.template_root%']]
 
   # Twig Extension
   forskel.twig.extension:
@@ -20,3 +22,4 @@ services:
     class: 'siemendev\ForskelBundle\Twig\ForskelRuntime'
     autowire: true
     tags: ['twig.runtime']
+

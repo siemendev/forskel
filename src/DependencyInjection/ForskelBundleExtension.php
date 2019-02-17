@@ -19,5 +19,10 @@ class ForskelBundleExtension extends Extension
             new FileLocator(__DIR__.'/../Resources/config')
         );
         $loader->load('services.yaml');
+
+        $configuration = $this->getConfiguration($mergedConfig, $container);
+        $config = $this->processConfiguration($configuration, $mergedConfig);
+
+        $container->setParameter('forskel.template_root', (!empty($config['template_root']) ? $config['template_root'] : ''));
     }
 }

@@ -7,6 +7,18 @@ use Symfony\Component\HttpFoundation\Response;
 interface RendererInterface
 {
     /**
+     * Sets the template path
+     * @param string|null $path
+     */
+    public function setTemplatePath(?string $path): void;
+
+    /**
+     * Returns the template path
+     * @return string|null
+     */
+    public function getTemplatePath(): ?string;
+
+    /**
      * Render a model
      * Renders the markup for a model and returns a fully qualified http response object.
      * @param ModelInterface $model

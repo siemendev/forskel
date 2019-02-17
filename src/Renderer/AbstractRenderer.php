@@ -6,17 +6,28 @@ use Symfony\Component\HttpFoundation\Response;
 
 abstract class AbstractRenderer implements RendererInterface
 {
-    /**
-     * @inheritDoc
-     */
+    /** @var ?string */
+    private $templatePath = '';
+
+    /** @inheritdoc */
+    public function setTemplatePath(?string $path): void
+    {
+        $this->templatePath = $path;
+    }
+
+    /** @inheritdoc */
+    public function getTemplatePath(): ?string
+    {
+        return $this->templatePath;
+    }
+
+    /** @inheritDoc */
     public function render(ModelInterface $model, $status = 200, $headers = []): Response
     {
         return new Response($this->renderView($model), $status, $headers);
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function guessTemplate(ModelInterface $model): ?string
     {
         try {
@@ -31,7 +42,7 @@ abstract class AbstractRenderer implements RendererInterface
 
         if(preg_match('/([A-Za-z]+)Bundle\\\Models\\\(.*)\\' . $classShort . '/', $classFQN, $matches)) {
 
-            return '@' . $matches[1] . '/' . str_replace('\\', '/', $matches[2]) . $this->convertClassnameToTemplateName($classShort) . '.html.twig';
+            return '@' . $matches[1] . '/' . (!empty($this->getTemplatePath()) ? $this->getTemplatePath() . '/' : '') . str_replace('\\', '/', $matches[2]) . $this->convertClassnameToTemplateName($classShort) . '.html.twig';
 
         }
 
