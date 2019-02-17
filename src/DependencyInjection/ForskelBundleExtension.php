@@ -25,4 +25,9 @@ class ForskelBundleExtension extends Extension
 
         $container->setParameter('forskel.template_root', (!empty($config['template_root']) ? $config['template_root'] : ''));
     }
+
+    public function getAlias()
+    {
+        return 'forskel';
+    }
 }
