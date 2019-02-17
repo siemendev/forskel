@@ -43,6 +43,7 @@ So lets just jump right in and start with a basic implementation of *Forskel* fo
       public $contents;
   }
   ```
+  *Pro tip:* Using private properties here with properly type-sensitive getters and setters allows you to force the right type for your property!
   
 2. Create the corresponding template in [bundle sources root]/Resources/views/my-fancy-page.html.twig
   ```html
@@ -63,7 +64,7 @@ So lets just jump right in and start with a basic implementation of *Forskel* fo
 Okay, that´s it on the bundle side, lets move over to the project itself where you installed the bundle manually!
 
 
-### Filling the model with data and render it
+### Filling the model with data and rendering it
 In this example we´re using an existing controller, the IndexController from any project that has our previously created reusable bundle installed (see Setup 3).
 
 Usually you would end this controller with a ```return $this->render();``` statement rendering the view, let´s see how *Forskel* changes this:
@@ -72,21 +73,25 @@ Usually you would end this controller with a ```return $this->render();``` state
 namespace vendor\ProjectBundle\Controller;
 
 use vendor\FrontendBundle\Models\MyFancyPage;
+use siemendev\ForskelBundle\Renderers\TwigRenderer;
 
 class IndexController extends AbstractController
 {
     /**
      * @Route("/", name="index")
      */
-    public function index(Builder $forskel)
+    public function index(TwigRenderer $forskel)
     {
         $page = new MyFancyPage();
         $page->headline = 'This page is so fancy!';
 
-        return new Response($forskel->renderModel($page));
+        return $forskel->render($page));
     }
 }
 ```
+**Pro tip:** If you don't want to inject the Renderer in every controller manually, try extending symfonys AbstractController to automaticly load the renderer.
+
+**Master tip:** Overwrite the render() method in the extended AbstractController. This way you remove the build-in twig rendering, which forces the developers in the project even more to use Forskel for Frontend rendering.
 
 ## Contribution welcome!
 If you´re trying out *Forskel* and have some feedback, [open up an issue](https://github.com/siemendev/forskel/issues)
