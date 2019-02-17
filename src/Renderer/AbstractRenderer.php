@@ -9,25 +9,21 @@ abstract class AbstractRenderer implements RendererInterface
     /** @var ?string */
     private $templatePath = '';
 
-    /** @inheritdoc */
     public function setTemplatePath(?string $path): void
     {
         $this->templatePath = $path;
     }
 
-    /** @inheritdoc */
     public function getTemplatePath(): ?string
     {
         return $this->templatePath;
     }
 
-    /** @inheritDoc */
     public function render(ModelInterface $model, $status = 200, $headers = []): Response
     {
         return new Response($this->renderView($model), $status, $headers);
     }
 
-    /** @inheritDoc */
     public function guessTemplate(ModelInterface $model): ?string
     {
         try {
@@ -49,9 +45,6 @@ abstract class AbstractRenderer implements RendererInterface
         return '';
     }
 
-    /**
-     * @inheritDoc
-     */
     private function convertClassnameToTemplateName(string $classname): string
     {
         preg_match_all('!([A-Z][A-Z0-9]*(?=$|[A-Z][a-z0-9])|[A-Za-z][a-z0-9]+)!', $classname, $matches);

@@ -9,9 +9,6 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class ForskelBundleExtension extends Extension
 {
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $mergedConfig, ContainerBuilder $container)
     {
         $loader = new YamlFileLoader(
