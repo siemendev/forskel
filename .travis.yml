@@ -43,11 +43,10 @@ before_install:
 # Note: for coveralls to work you need a ".coveralls.yml" file (see other file in this gist).
 install:
   - composer install
-  - composer require --dev satooshi/php-coveralls:~0.6
 
 # Run script and log coverage in the "build" directory
 script:
-  - vendor/bin/phpunit --coverage-text --coverage-clover build/coverage-clover.xml
+  - vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml
 
 # Run coveralls after success and if not in hhvm (too much cache, incorrect coverage)
 after_success: |

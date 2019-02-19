@@ -2,5 +2,5 @@ composer.lock
 vendor
 .idea
 phpunit.xml
-tests/coverage
+build
 .php_cs.cache
