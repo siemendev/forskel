@@ -3,3 +3,4 @@ vendor
 .idea
 phpunit.xml
 tests/coverage
+.php_cs.cache
