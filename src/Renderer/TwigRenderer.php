@@ -1,12 +1,29 @@
 <?php
+
+/**
+ * This file is part of the siemendev/forskel package.
+ *
+ * (c) Patrick Siemen <post@patrick-siemen.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace siemendev\ForskelBundle\Renderer;
 
 use Symfony\Component\HttpFoundation\Response;
 use siemendev\ForskelBundle\Models\ModelInterface;
 
+/**
+ * Class TwigRenderer
+ *
+ * @package siemendev\ForskelBundle\Renderer
+ */
 class TwigRenderer extends AbstractRenderer
 {
-    /** @var \Twig_Environment */
+    /**
+     * @var \Twig_Environment
+     */
     protected $twig;
 
     public function __construct(\Twig_Environment $twig)
@@ -17,9 +34,10 @@ class TwigRenderer extends AbstractRenderer
     /**
      * Build Model
      * Runs twig to compile the template for the given model with the data stored in the model.
-     * @param ModelInterface $model
-     * @param int $status
-     * @param array $headers
+     *
+     * @param  ModelInterface $model
+     * @param  int            $status
+     * @param  array          $headers
      * @return Response|null
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
@@ -31,11 +49,10 @@ class TwigRenderer extends AbstractRenderer
         $loader = $this->twig->getLoader();
         $args = ['model' => $model];
 
-        if(empty($template) || !$loader->exists($template)) {
-
+        if (empty($template) || !$loader->exists($template)) {
             $guessedTemplate = $this->guessTemplate($model);
 
-            if(!empty($guessedTemplate) && $loader->exists($guessedTemplate)) {
+            if (!empty($guessedTemplate) && $loader->exists($guessedTemplate)) {
                 $template = $guessedTemplate;
             } else {
                 $template = '@Forskel/default.html.twig';
@@ -49,6 +66,7 @@ class TwigRenderer extends AbstractRenderer
 
     /**
      * Twig environment getter
+     *
      * @return \Twig_Environment
      */
     public function getTwig(): \Twig_Environment
