@@ -38,5 +38,7 @@
     },
     "conflict": {
         "symfony/symfony": "<4.0"
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
