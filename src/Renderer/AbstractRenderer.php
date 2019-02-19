@@ -32,13 +32,17 @@ abstract class AbstractRenderer implements RendererInterface
             return '';
         }
 
-        $classShort = $class->getShortName();
-        $classFQN = $class->getName();
+        return $this->getTemplateByClassName($class->getName(), $class->getShortName());
+
+    }
+
+    public function getTemplateByClassName(string $fullyQualifiedClassName, $className): string
+    {
         $matches = [];
 
-        if(preg_match('/([A-Za-z]+)Bundle\\\Models\\\(.*)\\' . $classShort . '/', $classFQN, $matches)) {
+        if(preg_match('/([A-Za-z]+)Bundle\\\Models\\\(.*)\\' . $className . '/', $fullyQualifiedClassName, $matches)) {
 
-            return '@' . $matches[1] . '/' . (!empty($this->getTemplatePath()) ? $this->getTemplatePath() . '/' : '') . str_replace('\\', '/', $matches[2]) . $this->convertClassnameToTemplateName($classShort) . '.html.twig';
+            return '@' . $matches[1] . '/' . (!empty($this->getTemplatePath()) ? $this->getTemplatePath() . '/' : '') . str_replace('\\', '/', $matches[2]) . $this->convertClassnameToTemplateName($className) . '.html.twig';
 
         }
 

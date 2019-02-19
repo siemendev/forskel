@@ -2,15 +2,14 @@
 namespace siemendev\ForskelBundle\Renderer;
 
 use Symfony\Component\HttpFoundation\Response;
-use Twig\Environment;
 use siemendev\ForskelBundle\Models\ModelInterface;
 
 class TwigRenderer extends AbstractRenderer
 {
-    /** @var Environment */
+    /** @var \Twig_Environment */
     protected $twig;
 
-    public function __construct(Environment $twig)
+    public function __construct(\Twig_Environment $twig)
     {
         $this->twig = $twig;
     }
@@ -26,7 +25,7 @@ class TwigRenderer extends AbstractRenderer
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function renderView(ModelInterface $model, $status = 200, $headers = []): ?string
+    public function renderView(ModelInterface $model): ?string
     {
         $template = $model->getModelTemplate();
         $loader = $this->twig->getLoader();
@@ -46,5 +45,14 @@ class TwigRenderer extends AbstractRenderer
         }
 
         return $this->twig->render($template, $args);
+    }
+
+    /**
+     * Twig environment getter
+     * @return \Twig_Environment
+     */
+    public function getTwig(): \Twig_Environment
+    {
+        return $this->twig;
     }
 }
