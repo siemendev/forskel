@@ -2,13 +2,13 @@
 
 # Forskel
 
-Forskel is a fully decoupled frontend rendering library for multi-site symfony projects.
+Forskel is a loosely coupled frontend rendering library for multi-site symfony projects that share the same frontend markup.
 
 **Sound good, right? *But what does that MEAN?***
 
-When using the same frontend for multiple symfony projects, one way to keep redundancy low is decoupling the full frontend architecture in an own bundle. Taking over from this approach I´ve been developing *Forksel* to keep the templating out of the operational symfony projects.
+When using the same frontend for multiple symfony projects, one way to keep redundancy low is to decouple the frontend architecture from the actual business logic into an own bundle. Taking over from this approach I´ve been developing *Forksel* to keep the templating out of the operational symfony projects.
 
-With *Forskel* you´re able to write super clean, object-oriented code instead of templating markup in the projects, while you  maintain the markup in the templates for all of them at one place in the *Forskel* based Extension Bundle.
+With *Forskel* you're able to write super clean, object-oriented code instead of templating markup in the projects while you  maintain the markup in the templates for all of them at one place: The *Forskel* based Extension-Bundle.
 
 ## Give it a shot, take me to implementing *Forskel*!
 
