@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/siemendev/forskel.svg?branch=master)](https://travis-ci.org/siemendev/forskel)
+[![Latest Stable Version](https://poser.pugx.org/siemendev/forskel/v/stable)](https://packagist.org/packages/siemendev/forskel)
 
 # Forskel
 
